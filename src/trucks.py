@@ -9,3 +9,8 @@ class Truck:
         self.truck_departure = truck_departure
         self.route_end = route_end
 
+    # Control what displays when the truck is called
+    def __str__(self):
+        return 'Truck ID: {} delivered the following packages today:\n{}'.format(self.truck_id, ', '.join(map(str, self.pkg_list)))
+
+

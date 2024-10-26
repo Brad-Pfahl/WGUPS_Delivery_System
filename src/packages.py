@@ -6,7 +6,7 @@ import hashtable
 class Package:
     def __init__(self, pkg_id, pkg_address, pkg_city, pkg_state, pkg_zip, pkg_deadline, pkg_delivery_status,
                  pkg_departure_time, pkg_delivery_time, pkg_weight, pkg_special_notes):
-        self.pkg_id = pkg_id
+        self.pkg_id = int(pkg_id)
         self.pkg_address = pkg_address
         self.pkg_city = pkg_city
         self.pkg_state = pkg_state
@@ -53,13 +53,10 @@ for row in pkg_dict_reader:
     # Insert the package into the hash table while using the ID as the key and the package as the item
     package_table.insert(package.pkg_id, package)
 
-
 # Used during testing to make sure packages are being loaded correctly, commented out when not in use
-'''
+
 package = package_table.search('1')
 if package:
     print(f"Package found: {package}")
 else:
     print("Package not found.")
-'''
-

@@ -20,10 +20,14 @@ class Package:
 
     # Identify what the package will show when called
     def __str__(self):
-        return "%s,%s,%s,%s, %s, %s, %s, %s,%s,%s,%s" % (self.pkg_id, self.pkg_address, self.pkg_city, self.pkg_state,
-                                                         self.pkg_zip, self.pkg_deadline, self.pkg_delivery_status,
-                                                         self.pkg_departure_time, self.pkg_delivery_time,
-                                                         self.pkg_weight, self.pkg_special_notes)
+        return ('Package ID: %s\n'
+                'Package Delivery Address: %s, %s %s, %s\n'
+                'Delivery Deadline: %s\n'
+                'Delivered ''at: ''%s\n'
+                'Package weight: %s\n'
+                'Special Conditions (if available): %s') % (
+            self.pkg_id, self.pkg_address, self.pkg_city, self.pkg_state, self.pkg_zip,
+            self.pkg_deadline, self.pkg_delivery_time, self.pkg_weight, self.pkg_special_notes)
 
 
 # Create new instance of ChainingHashTable
@@ -54,9 +58,10 @@ for row in pkg_dict_reader:
     package_table.insert(package.pkg_id, package)
 
 # Used during testing to make sure packages are being loaded correctly, commented out when not in use
-
-package = package_table.search('1')
+'''
+package = package_table.search(18)
 if package:
     print(f"Package found: {package}")
 else:
     print("Package not found.")
+'''

@@ -1,5 +1,6 @@
 import datetime
 
+from src.dijkstra import dijkstraAlgorithmShortestPath
 from src.packages import package_table
 
 
@@ -15,6 +16,32 @@ class Truck:
     # Control what displays when the truck is called
     def __str__(self):
         return 'Truck ID: {} delivered the following packages today:\n{}'.format(self.truck_id, ', '.join(map(str, self.pkg_list)))
+
+'''
+    def deliver_packages(self, g, start_vertex):
+        # Run Dijkstra's algorithm to find the shortest paths
+        dijkstraAlgorithmShortestPath(Truck)
+
+        for pkg_id in self.pkg_list:
+            package = package_table.search(pkg_id)
+            if package and package.status != "delivered":
+                package_vertex:
+                    distance = package_vertex.distance
+
+                    time_to_deliver_hours = distance / 18
+                    time_to_deliver = datetime.timedelta(hours=time_to_deliver_hours)
+
+                    self.truck_mileage += distance
+
+                    package.status = "delviered"
+                    package.delivery_time = time_to_deliver
+
+                    self.pkg_list.remove(pkg_id)
+
+                    print(f"Delivered package {pkg_id} to {package.pkg_address}.")
+                    print(f"Time taken for delivery: {time_to_deliver}.")
+'''
+
 
 
 # Manually loading the trucks

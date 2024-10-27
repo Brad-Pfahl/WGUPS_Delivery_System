@@ -1,5 +1,7 @@
 # Dijkstra.py
 # Dijkstra shortest path - START
+import datetime
+
 from src.distance import addressData, distanceData, distance_between
 from src.packages import package_table
 from src.trucks import truck_0, truck_1, truck_2, Truck
@@ -101,10 +103,10 @@ def get_shortest_path_city(start_vertex, end_vertex, myHash):
 
 
 def dijkstraAlgorithmShortestPath(truck):
-    # Dijkstra shortest path main 
-    # Program to find shortest paths from vertex A.
-    g = Graph()
-    vertices = {}
+    # Dijkstra shortest path main
+    # Program to find the shortest paths from the truck's hub.
+    g = Graph()  # Create a new graph instance
+    vertices = {}  # Dictionary to hold vertices for addresses
 
     # Create a vertex for the hub and add it to the graph
     hub_address = "4001 South 700 East"
@@ -116,7 +118,7 @@ def dijkstraAlgorithmShortestPath(truck):
     for pkg_id in truck.pkg_list:
         package = package_table.search(pkg_id)
         if not package:
-            print(f"Package with ID {pkg_id} not found")
+            print(f"Package with ID {pkg_id} not found.")
             continue
 
         address = package.pkg_address
@@ -131,7 +133,7 @@ def dijkstraAlgorithmShortestPath(truck):
             weight = distance_between(hub_address, address)  # Calculate distance from hub to package
             g.add_directed_edge(hub_vertex, new_vertex, weight)  # Add edge from hub to package
 
-    # Load distance data and add edges between vertices.
+    # Load distance data and add edges between all vertices.
     for address1 in vertices:
         for address2 in vertices:
             if address1 != address2:
@@ -141,10 +143,12 @@ def dijkstraAlgorithmShortestPath(truck):
 
     # Pick the hub as the start vertex
     start_vertex = hub_vertex
-    dijkstra_shortest_path(g, start_vertex)
+    dijkstra_shortest_path(g, start_vertex)  # Call the Dijkstra's algorithm function
 
-    # Display shortest path to each vertex
+    # Initialize truck mileage
     truck_mileage = 0
+    delivery_time = truck.truck_departure
+
     print("\nDijkstra shortest path:")
     for v in g.adjacency_list:
         if v.pred_vertex is None and v is not start_vertex:
@@ -154,8 +158,28 @@ def dijkstraAlgorithmShortestPath(truck):
             print(f"{start_vertex.label} to {v.label} ==> {path} (total distance: {v.distance})")
             truck_mileage += v.distance  # Add the distance to the total mileage of our truck
 
-    truck.truck_mileage = truck_mileage
+            # Calculate time and assign it to packages
+            time_to_deliver = v.distance / 18  # Speed = 18 miles/hour
+            delivery_time += datetime.timedelta(hours=time_to_deliver)
 
+            # Track if any package is found for the current address
+            package_found = False
+
+            # Find packages delivered to this address
+            for pkg_id in truck.pkg_list:
+                package = package_table.search(pkg_id)
+                if package and package.pkg_address == v.label:
+                    # Update the delivery time and status for this package
+                    package.pkg_delivery_time = delivery_time
+                    package.pkg_delivery_status = "Delivered"
+
+                    print(f"Delivered package {package.pkg_id} to {package.pkg_address} at {delivery_time}.")
+                    package_found = True # Indicate that at least one package matched this address
+            if not package_found:
+                print(f"No package found for address {v.label} or mismatch with package ID.")
+
+    truck.truck_mileage = truck_mileage
+    truck.truck_time = delivery_time
 
 '''
 dijkstraAlgorithmShorthestPath()

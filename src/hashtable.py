@@ -55,3 +55,11 @@ class ChainingHashTable:
             # print (key_value)
             if kv[0] == key:
                 bucket_list.remove([kv[0], kv[1]])
+
+    # Displays all the entries in the hash table
+    def print_all(self):
+        print("Current packages:")
+        for bucket in self.table:
+            for kv in bucket:
+                key, item = kv
+                print(f"{item}\n")

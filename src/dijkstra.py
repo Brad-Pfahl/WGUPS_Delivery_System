@@ -86,22 +86,6 @@ def get_shortest_path(start_vertex, end_vertex):
     path = start_vertex.label + path
     return path
 
-'''
-def get_shortest_path_city(start_vertex, end_vertex, myHash):
-    # Start from end_vertex and build the path backwards.
-    path = ""
-    current_vertex = end_vertex
-    while current_vertex is not start_vertex:
-        myMovie = myHash.search(int(current_vertex.label))
-        path = " -> " + myMovie.city + path
-        current_vertex = current_vertex.pred_vertex
-    path = "Salt Lake City " + path
-    return path
-'''
-
-# ---------------------------------------------------------
-
-
 def dijkstraAlgorithmShortestPath(truck):
     # Dijkstra shortest path main
     # Program to find the shortest paths from the truck's hub.
@@ -180,34 +164,3 @@ def dijkstraAlgorithmShortestPath(truck):
 
     truck.truck_mileage = truck_mileage
     truck.truck_time = delivery_time
-
-'''
-dijkstraAlgorithmShorthestPath()
-# Dijkstra shortest path - END
-
-# main - START
-if __name__ == '__main__':
-    print("\nWelcome to C950: Classic Movies: Hash Table, CSV Import, Greedy Algorithm, Dijkstra Algorithm")
-
-    # loop until user is satisfied
-    isExit = True
-    while (isExit):
-        print("\nOptions:")
-        print("1. Get Movie Data")
-        print("2. Run Greedy Algorithm with a Budget")
-        print("3. Run Dijkstra Algorithm")
-        print("4. Exit the Program")
-        option = input("Chose an option (1,2,3 or 4): ")
-        if option == "1":
-            getMovieData()
-        elif option == "2":
-            budget = int(input("What is your budget (ex. 150)? "))
-            greedyAlgorithmMinExpenses(budget)
-        elif option == "3":
-            dijkstraAlgorithmShorthestPath()
-        elif option == "4":
-            isExit = False
-        else:
-            print("Wrong option, please try again!")          
-# main - END
-'''

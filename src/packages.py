@@ -12,7 +12,7 @@ class Package:
         self.pkg_state = pkg_state
         self.pkg_zip = pkg_zip
         self.pkg_deadline = pkg_deadline
-        self.pkg_delivery_status = 'Processing'
+        self.pkg_delivery_status = 'At Hub'
         self.pkg_departure_time = None
         self.pkg_delivery_time = None
         self.pkg_weight = pkg_weight

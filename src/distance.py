@@ -1,5 +1,7 @@
 import csv
 
+# Handle address and distance data from csvs
+
 # Read address data from WGUPS_Addresses.csv
 addressData = []
 with open('csvs/WGUPS_Addresses.csv') as file:

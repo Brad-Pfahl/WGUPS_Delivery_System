@@ -1,6 +1,5 @@
-
-
 # HashTable class using chaining.
+# Citing Source: W-1_ChainingHashTable_zyBooks_Key-Value.py
 class ChainingHashTable:
     # Constructor with optional initial capacity parameter.
     # Assigns all buckets with an empty list.
@@ -10,7 +9,6 @@ class ChainingHashTable:
         for i in range(initial_capacity):
             self.table.append([])
 
-    # Citing Source: W-1_ChainingHashTable_zyBooks_Key-Value.py
     # Inserts a new item into the hash table.
     def insert(self, key, item):  # does both insert and update
         # get the bucket list where this item will go.

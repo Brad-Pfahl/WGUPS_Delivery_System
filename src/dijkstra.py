@@ -1,10 +1,12 @@
 # Dijkstra.py
+# Unused code for Dijkstra Algorithm. Plans to improve efficiency later on
 # Dijkstra shortest path - START
+"""
 import datetime
 
 from src.distance import addressData, distanceData, distance_between
 from src.packages import package_table
-from src.trucks import truck_0, truck_1, truck_2, Truck
+from src.trucks import truck_1, truck_2, truck_3, Truck
 
 
 # Modified version of Dijkstra Algorithm using 'WGU C950 Webinar-3 How to Dijkstra' as a starting point
@@ -164,3 +166,4 @@ def dijkstraAlgorithmShortestPath(truck):
 
     truck.truck_mileage = truck_mileage
     truck.truck_time = delivery_time
+"""

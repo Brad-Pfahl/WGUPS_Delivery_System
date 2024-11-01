@@ -123,7 +123,7 @@ def display_truck_details(truck):
         print(f"Truck number {truck} not found. Please enter 1-3")
 
 
-# Exit the program. Choice #5
+# Exit the program. Choice #6
 def exit_program():
     print("Exiting the WGUPS delivery system. Hope you had a hoot!")
     exit()

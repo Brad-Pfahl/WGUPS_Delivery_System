@@ -14,7 +14,7 @@ class Package:
         self.pkg_state = pkg_state
         self.pkg_zip = pkg_zip
         self.pkg_deadline = pkg_deadline
-        self.pkg_delivery_status = 'Not Shipped'
+        self.pkg_delivery_status = 'At the Hub'
         self.pkg_departure_time = None
         self.pkg_delivery_time = None
         self.pkg_weight = pkg_weight
@@ -51,9 +51,9 @@ class Package:
         if self.pkg_delivery_time <= convert_timedelta:
             self.pkg_delivery_status = "Delivered"
         elif self.pkg_departure_time <= convert_timedelta:
-            self.pkg_delivery_status = "In Transit"
+            self.pkg_delivery_status = "En Route"
         else:
-            self.pkg_delivery_status = "Not Shipped"
+            self.pkg_delivery_status = "At the Hub"
 
 
 # Create new instance of ChainingHashTable

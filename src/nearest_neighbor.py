@@ -12,7 +12,7 @@ def nearest_neighbor_algorithm(truck):
 
     # Start from the hub
     current_address = hub_address
-    total_mileage = 0
+    total_mileage = 0  # Initialize mileage to 0
     delivery_time = truck.truck_departure
 
     # Track the delivery order of packages
@@ -24,25 +24,28 @@ def nearest_neighbor_algorithm(truck):
         if package:
             package.pkg_departure_time = truck.truck_departure
 
+    # Continue delivering packages until the package list is empty
     while package_list:
-        # Update package addresses based on current time
+        # Update package addresses based on current time. This is useful for status updates
         current_time = delivery_time
         for pkg_id in package_list:
             package = package_table.search(pkg_id)
             if package:
-                package.address_update(current_time)  # Call the update method
+                package.address_update(current_time)  # Call the update method to refresh address details
 
-        # Find the nearest package
+        # Initialize variables to find the nearest package
         nearest_package = None
-        nearest_distance = float('inf')
+        nearest_distance = float('inf')  # Start with infinite distance
 
+        # Loop through all packages to find the nearest one
         for pkg_id in package_list:
-            package = package_table.search(pkg_id)
+            package = package_table.search(pkg_id)  # Look up each package
             if package:
+                # Calculate the distance from the current address to the package's address
                 distance = distance_between(current_address, package.pkg_address)
-                if distance < nearest_distance:
-                    nearest_distance = distance
-                    nearest_package = package
+                if distance < nearest_distance:  # Check if this package is closer than previously found
+                    nearest_distance = distance  # Update nearest distance
+                    nearest_package = package  # Update the nearest package reference
 
         # Update total mileage
         total_mileage += nearest_distance

@@ -46,7 +46,7 @@ def view_single_package_status(pkg_id):
     package = package_table.search(pkg_id)  # Search for the package by ID
 
     if package:
-        print(f"Package found: {package}")
+        print(f"\nPackage found:\n{package}")
     else:
         print(f"Package with ID {pkg_id} not found.")
 

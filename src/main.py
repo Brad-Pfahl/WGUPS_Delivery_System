@@ -64,12 +64,15 @@ def view_single_package_status_based_on_time(pkg_id, time_input):
     if package:
         package.update_status(convert_timedelta)
         if package.pkg_delivery_time <= convert_timedelta:
-            print(package)
-            print(
-                f"Package ID: {package.pkg_id}, Status: {package.pkg_delivery_status} at {package.pkg_delivery_time}.")
+            print(f"Package ID: {package.pkg_id}"
+                  f"\nStatus: {package.pkg_delivery_status} at {package.pkg_delivery_time}"
+                  f"\nDelivery Deadline: {package.pkg_deadline}"
+                  f"\nDelivery Address: {package.pkg_address}.")
         else:
-            print(package)
-            print(f"Package ID: {package.pkg_id}, Status: {package.pkg_delivery_status}")
+            print(f"Package ID: {package.pkg_id}"
+                  f"\nStatus: {package.pkg_delivery_status}"
+                  f"\nDelivery Deadline: {package.pkg_deadline}"
+                  f"\nDelivery Address: {package.pkg_address}.")
     else:
         print(f"Package with ID {pkg_id} not found.")
 
@@ -87,10 +90,15 @@ def all_package_status_with_time(time_input):
             package = kv[1]  # The second element is the package object
             package.update_status(convert_timedelta)
             if package.pkg_delivery_time <= convert_timedelta:
-                print(
-                    f"Package ID: {package.pkg_id}, Status: {package.pkg_delivery_status} at {package.pkg_delivery_time}")
+                print(f"\nPackage ID: {package.pkg_id}"
+                      f"\nStatus: {package.pkg_delivery_status} at {package.pkg_delivery_time}"
+                      f"\nDelivery Deadline: {package.pkg_deadline}"
+                      f"\nDelivery Address: {package.pkg_address}.")
             else:
-                print(f"Package ID: {package.pkg_id}, Status: {package.pkg_delivery_status}")
+                print(f"\nPackage ID: {package.pkg_id}"
+                      f"\nStatus: {package.pkg_delivery_status}"
+                      f"\nDelivery Deadline: {package.pkg_deadline}"
+                      f"\nDelivery Address: {package.pkg_address}.")
 
 
 # View truck details. Choice # 5

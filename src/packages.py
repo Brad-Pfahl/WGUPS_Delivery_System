@@ -1,4 +1,6 @@
 import csv
+import datetime
+
 import hashtable
 
 
@@ -12,7 +14,7 @@ class Package:
         self.pkg_state = pkg_state
         self.pkg_zip = pkg_zip
         self.pkg_deadline = pkg_deadline
-        self.pkg_delivery_status = 'At Hub'
+        self.pkg_delivery_status = 'Not Shipped'
         self.pkg_departure_time = None
         self.pkg_delivery_time = None
         self.pkg_weight = pkg_weight
@@ -29,6 +31,29 @@ class Package:
                 'Special Conditions (if available): %s') % (
             self.pkg_id, self.pkg_address, self.pkg_city, self.pkg_state, self.pkg_zip,
             self.pkg_deadline, self.pkg_delivery_status, self.pkg_delivery_time, self.pkg_weight, self.pkg_special_notes)
+
+    # Update the address for package #9 if the time is at or past 10:20
+    def address_update(self, current_time):
+        if self.pkg_id == 9:
+            correction_time = datetime.timedelta(hours=10, minutes=30)
+            if current_time >= correction_time:
+                self.pkg_address = ""
+                self.pkg_address = "410 S State St"
+                self.pkg_city = ""
+                self.pkg_city = "Salt Lake City"
+                self.pkg_state = ""
+                self.pkg_state = "UT"
+                self.pkg_zip = ""
+                self.pkg_zip = "84111"
+
+    def update_status(self, convert_timedelta):
+        self.address_update(convert_timedelta)
+        if self.pkg_delivery_time <= convert_timedelta:
+            self.pkg_delivery_status = "Delivered"
+        elif self.pkg_departure_time <= convert_timedelta:
+            self.pkg_delivery_status = "In Transit"
+        else:
+            self.pkg_delivery_status = "Not Shipped"
 
 
 # Create new instance of ChainingHashTable

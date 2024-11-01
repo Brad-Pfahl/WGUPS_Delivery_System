@@ -35,7 +35,7 @@ class Package:
     # Update the address for package #9 if the time is at or past 10:20
     def address_update(self, current_time):
         if self.pkg_id == 9:
-            correction_time = datetime.timedelta(hours=10, minutes=30)
+            correction_time = datetime.timedelta(hours=10, minutes=20)
             if current_time >= correction_time:
                 self.pkg_address = ""
                 self.pkg_address = "410 S State St"
@@ -47,10 +47,12 @@ class Package:
                 self.pkg_zip = "84111"
 
     def update_status(self, convert_timedelta):
-        self.address_update(convert_timedelta)
-        if self.pkg_delivery_time <= convert_timedelta:
+        self.address_update(convert_timedelta)  # Update address first
+
+        # Check delivery status based on current time
+        if self.pkg_delivery_time and self.pkg_delivery_time <= convert_timedelta:
             self.pkg_delivery_status = "Delivered"
-        elif self.pkg_departure_time <= convert_timedelta:
+        elif self.pkg_departure_time and self.pkg_departure_time <= convert_timedelta:
             self.pkg_delivery_status = "En Route"
         else:
             self.pkg_delivery_status = "At the Hub"

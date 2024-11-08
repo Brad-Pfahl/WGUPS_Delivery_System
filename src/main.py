@@ -97,7 +97,6 @@ def view_single_package_status_based_on_time(pkg_id, time_input):
 # Get all package status with a time. Choice # 4
 def all_package_status_with_time(time_input):
     print(f"\nPackage Status at {time_input}:")
-    print(f"Total Mileage: {total_mileage}")
 
     # Convert user input to timedelta
     (h, m, s) = map(int, time_input.split(":"))

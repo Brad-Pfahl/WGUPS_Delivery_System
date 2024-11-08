@@ -65,18 +65,18 @@ def view_single_package_status_based_on_time(pkg_id, time_input):
         package.update_status(convert_timedelta)
         if package.pkg_delivery_time <= convert_timedelta:
             print(f"\nPackage ID: {package.pkg_id}"
-                      f"\nStatus: {package.pkg_delivery_status} at {package.pkg_delivery_time}"
-                      f"\nDelivery Deadline: {package.pkg_deadline}"
-                      f"\nDelivery Address: {package.pkg_address} {package.pkg_city}, {package.pkg_state}"
-                      f", {package.pkg_zip}."
-                      f"\nWeight: {package.pkg_weight}")
+                  f"\nStatus: {package.pkg_delivery_status} at {package.pkg_delivery_time}"
+                  f"\nDelivery Deadline: {package.pkg_deadline}"
+                  f"\nDelivery Address: {package.pkg_address} {package.pkg_city}, {package.pkg_state}"
+                  f", {package.pkg_zip}."
+                  f"\nWeight: {package.pkg_weight}")
         else:
             print(f"\nPackage ID: {package.pkg_id}"
-                      f"\nStatus: {package.pkg_delivery_status}"
-                      f"\nDelivery Deadline: {package.pkg_deadline}"
-                      f"\nDelivery Address: {package.pkg_address} {package.pkg_city}, {package.pkg_state}"
-                      f", {package.pkg_zip}."
-                      f"\nWeight: {package.pkg_weight}")
+                  f"\nStatus: {package.pkg_delivery_status}"
+                  f"\nDelivery Deadline: {package.pkg_deadline}"
+                  f"\nDelivery Address: {package.pkg_address} {package.pkg_city}, {package.pkg_state}"
+                  f", {package.pkg_zip}."
+                  f"\nWeight: {package.pkg_weight}")
     else:
         print(f"Package with ID {pkg_id} not found.")
 

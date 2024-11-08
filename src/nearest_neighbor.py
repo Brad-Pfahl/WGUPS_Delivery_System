@@ -2,7 +2,6 @@ import datetime
 
 from src.distance import distance_between
 from src.packages import package_table
-from src.trucks import truck_1, truck_3, truck_2
 
 
 # This is our main routing algorithm based on the nearest neighbor algorithm
@@ -76,14 +75,3 @@ def nearest_neighbor_algorithm(truck):
     # Update truck details
     truck.truck_mileage = total_mileage
     truck.truck_time = delivery_time
-
-
-# Routing algorithm function for each truck with special departure time fo truck 3
-def run_nearest_neighbor_algorithm():
-    # Each truck running through algorithm
-    nearest_neighbor_algorithm(truck_1)
-    nearest_neighbor_algorithm(truck_2)
-
-    # Ensure that truck 3 does not leave until one of the drivers returns, and we know the correct address for pkg 9
-    truck_3.truck_departure = max(datetime.timedelta(hours=10, minutes=20), min(truck_1.truck_time, truck_2.truck_time))
-    nearest_neighbor_algorithm(truck_3)

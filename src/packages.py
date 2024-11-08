@@ -23,12 +23,12 @@ class Package:
     # Identify what the package will show when called
     def __str__(self):
         return ('Package ID: %s\n'
-                'Package Delivery Address: %s, %s %s, %s\n'
-                'Delivery Deadline: %s\n'
-                'Delivery Status: %s\n'
-                'Delivered ''at: ''%s\n'
-                'Package weight: %s\n'
-                'Special Conditions (if available): %s') % (
+                'Package Delivery Address: %s, %s %s, %s'
+                '; Delivery Deadline: %s'
+                '; Delivery Status: %s'
+                '; Delivered ''at: ''%s'
+                '; Package weight: %s'
+                '; Special Conditions (if available): %s') % (
             self.pkg_id, self.pkg_address, self.pkg_city, self.pkg_state, self.pkg_zip,
             self.pkg_deadline, self.pkg_delivery_status, self.pkg_delivery_time, self.pkg_weight, self.pkg_special_notes)
 

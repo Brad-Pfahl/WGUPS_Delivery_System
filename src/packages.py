@@ -37,14 +37,15 @@ class Package:
         if self.pkg_id == 9:
             correction_time = datetime.timedelta(hours=10, minutes=20)
             if current_time >= correction_time:
-                self.pkg_address = ""
                 self.pkg_address = "410 S State St"
-                self.pkg_city = ""
                 self.pkg_city = "Salt Lake City"
-                self.pkg_state = ""
                 self.pkg_state = "UT"
-                self.pkg_zip = ""
                 self.pkg_zip = "84111"
+            else:
+                self.pkg_address = "300 State St"
+                self.pkg_city = "Salt Lake City"
+                self.pkg_state = "UT"
+                self.pkg_zip = "84103"
 
     def update_status(self, convert_timedelta):
         self.address_update(convert_timedelta)  # Update address first

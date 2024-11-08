@@ -3,7 +3,7 @@
 # Title: C950 WGUPS Routing Program
 
 from src.nearest_neighbor import nearest_neighbor_algorithm
-from src.packages import package_table
+from src.packages import *
 from src.trucks import *
 
 # Run package route before Main interface runs so data is available
